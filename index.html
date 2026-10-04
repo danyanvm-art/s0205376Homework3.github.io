@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Задание 3: Адаптивная верстка (Mobile First)</title>
+    <title>Задание 3: Адаптивная верстка</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Обязательный мета-тег для адаптивности -->
+    <!-- ЭТО ВАЖНО ДЛЯ ЗАДАНИЯ 3: чтобы телефон не зумил страницу сам -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <!-- Главный контейнер, который будет управлять порядком блоков на мобильном -->
     <div class="page-wrapper">
         
         <!-- 1. Шапка -->
@@ -19,21 +18,21 @@
                     <div class="logo-circle"></div>
                     <span class="site-name">Название сайта</span>
                 </div>
+                
+                <!-- Меню (на мобильном будет ниже, на ПК справа) -->
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#">Ссылка меню 1</a></li>
+                        <li><a href="#">Ссылка меню 2</a></li>
+                        <li><a href="#">Ссылка меню 3</a></li>
+                    </ul>
+                </nav>
             </div>
         </header>
 
-        <!-- 2. Навигация (Меню) -->
-        <nav id="main-nav">
-            <ul>
-                <li><a href="#">Меню 1</a></li>
-                <li><a href="#">Меню 2</a></li>
-                <li><a href="#">Меню 3</a></li>
-            </ul>
-        </nav>
-
-        <!-- 3. Таблица -->
-        <!-- В HTML она стоит третьей, но на мобильном мы поднимем её выше через CSS -->
-        <section class="content-block" id="table-block">
+        <!-- 2. Таблица данных -->
+        <!-- В HTML она стоит второй, но на мобильном мы поднимем её выше списка ссылок -->
+        <section class="content-block block-table" id="table-block">
             <h2>Таблица данных</h2>
             <table>
                 <thead>
@@ -55,99 +54,57 @@
             </table>
         </section>
 
-        <!-- 4. Список ссылок -->
-        <!-- В HTML он стоит четвертым, но на мобильном будет ниже таблицы -->
-        <section class="content-block" id="links-block">
+        <!-- 3. Список ссылок -->
+        <!-- В HTML он стоит третьим, но на мобильном будет ниже таблицы -->
+        <section class="content-block block-links" id="links-block">
             <h2>Список ссылок (база)</h2>
             <ul>
                 <li><a href="http://kubsu.ru/">1) Ссылка на kubsu.ru (http)</a></li>
                 <li><a href="https://kubsu.ru/">2) Ссылка на kubsu.ru (https)</a></li>
-                <li>
-                    3) Ссылка-картинка:
-                    <br>
-                    <a href="https://kubsu.ru/">
-                        <img src="photohtml2.jpg" alt="Логотип" width="50" height="50" class="inline-img">
-                    </a>
-                </li>
+                <li>3) Ссылка-картинка: <a href="#"><img src="photohtml2.jpg" alt="Logo" width="30" height="30" style="vertical-align: middle;"></a></li>
                 <li><a href="about.html">4) Ссылка на внутреннюю страницу (about.html)</a></li>
                 <li><a href="index.html">5) Ссылка на главную (index.html)</a></li>
                 <li><a href="#contacts">6) Ссылка на блок "Контакты"</a></li>
-                <li>
-                    7) Ссылка с параметрами:
-                    <br>
-                    <a href="result.html?name=Ivan&age=20" target="_blank">Ссылка с параметрами</a>
-                </li>
-                <li><a href="contacts.html">8) Ссылка в текущей папке</a></li>
+                <li>7) Ссылка с параметрами: <a href="page.html?id=123&sort=asc">Параметры</a></li>
+                <li><a href="file.txt">8) Ссылка в текущей папке</a></li>
                 <li><a href="about/info.html">9) Ссылка в папке about</a></li>
-                <li>
-                    10) Контекстная ссылка:
-                    <p>Зайдите на <a href="https://kubsu.ru/">сайт университета</a>, чтобы узнать расписание.</p>
-                </li>
-                <li>
-                    11) Карта ссылок (map):
-                    <br>
-                    <img src="photohtml1.jpg" usemap="#site-map" alt="Карта" width="400" height="200" class="img-map">
-                    <map name="site-map">
-                        <area shape="rect" coords="0,0,200,200" href="https://kubsu.ru" alt="Прямоугольник">
-                        <area shape="circle" coords="300,100,60" href="https://google.com" alt="Круг">
-                    </map>
-                </li>
+                <li>10) Контекстная ссылка: Зайдите на <a href="https://kubsu.ru/">сайт университета</a>, чтобы узнать расписание.</li>
+                <li>11) Карта ссылок (map): <img src="photohtml1.jpg" usemap="#site-map" alt="Map" width="200" height="100"><map name="site-map"><area shape="rect" coords="0,0,100,100" href="https://kubsu.ru"></map></li>
                 <li><a href="#" onclick="return false;">12) Пустая ссылка</a></li>
                 <li>13) Имитация ссылки: <span class="fake-link">Нажмите сюда</span></li>
                 <li><a href="https://kubsu.ru/" rel="nofollow">14) Ссылка с запретом для поисковиков</a></li>
-                <li>
-                    15) Нумерованный список:
+                <li>15) Нумерованный список:
                     <ol>
                         <li><a href="https://kubsu.ru/">КубГУ</a></li>
                         <li><a href="https://google.com/">Google</a></li>
                     </ol>
                 </li>
-                <li>
-                    16) FTP ссылка:
-                    <br>
-                    <a href="ftp://user:pass@ftp.example.com/file.txt" target="_blank">Скачать файл с FTP</a>
-                </li>
+                <li>16) FTP ссылка: <a href="ftp://user:pass@ftp.example.com/file.txt" target="_blank">Скачать файл с FTP</a></li>
             </ul>
         </section>
 
-        <!-- 5. Форма -->
-        <section class="content-block" id="form-block">
+        <!-- 4. Форма -->
+        <section class="content-block block-form" id="form-block">
             <h2>Форма (база)</h2>
             <form action="/save" method="post">
-                <p>
-                    <label>1) ФИО: </label>
-                    <input type="text" name="fio" placeholder="Иванов И.И." class="form-input">
-                </p>
-                <p>
-                    <label>2) Телефон: </label>
-                    <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" class="form-input">
-                </p>
-                <p>
-                    <label>3) E-mail: </label>
-                    <input type="email" name="email" placeholder="name@mail.ru" class="form-input">
-                </p>
-                <p>
-                    <label>4) Дата рождения: </label>
-                    <input type="date" name="birth" class="form-input">
-                </p>
-                <p>
-                    5) Пол:
-                    <br>
-                    <input type="radio" name="gender" value="male" checked> Мужской
-                    <input type="radio" name="gender" value="female"> Женский
-                </p>
-                <p>
-                    6) Любимые языки программирования:
-                    <br>
-                    <input type="checkbox" name="lang" value="pascal"> Pascal &nbsp;&nbsp;
-                    <input type="checkbox" name="lang" value="c"> C &nbsp;&nbsp;
-                    <input type="checkbox" name="lang" value="cpp"> C++ &nbsp;&nbsp;
-                    <input type="checkbox" name="lang" value="python"> Python &nbsp;&nbsp;
-                    <input type="checkbox" name="lang" value="java"> Java &nbsp;&nbsp;
-                    <input type="checkbox" name="lang" value="js"> JavaScript
-                </p>
-                <p>
-                    <label>7) Биография: </label>
-                    <br>
-                    <textarea name="bio" rows="4" cols="40" placeholder="О себе..." class="form-textarea"></textarea>
-                </p>
+                <p><label>1) ФИО: </label><input type="text" name="fio" placeholder="Иванов И.И." class="form-input"></p>
+                <p><label>2) Телефон: </label><input type="tel" name="phone" placeholder="+7 (999) 000-00-00" class="form-input"></p>
+                <p><label>3) E-mail: </label><input type="email" name="email" placeholder="name@mail.ru" class="form-input"></p>
+                <p><label>4) Дата рождения: </label><input type="date" name="birth" class="form-input"></p>
+                <p>5) Пол: <input type="radio" name="gender" value="male" checked> Мужской <input type="radio" name="gender" value="female"> Женский</p>
+                <p>6) Языки: <input type="checkbox" name="lang" value="pascal"> Pascal <input type="checkbox" name="lang" value="c"> C</p>
+                <p><label>7) Биография: </label><br><textarea name="bio" rows="3" cols="30" class="form-textarea"></textarea></p>
+                <p><input type="checkbox" name="agree"> 8) С контрактом ознакомлен(а)</p>
+                <p><button type="submit" class="submit-btn">9) Сохранить</button></p>
+            </form>
+        </section>
+
+        <!-- 5. Подвал -->
+        <footer id="main-footer">
+            &copy; Данил Любарец
+        </footer>
+
+    </div>
+
+</body>
+</html>
