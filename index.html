@@ -2,35 +2,39 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 3: Адаптивность</title>
+    <title>Задание 3: Адаптивная верстка (Mobile First)</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Обязательный мета-тег для адаптивности -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <!-- HEADER: Лого и название -->
-    <header class="container">
-        <div class="header-content">
-            <div class="logo">Л</div>
-            <h1 class="site-title">Название сайта</h1>
-        </div>
-    </header>
-
-    <!-- MAIN: Основной контент -->
-    <main class="container">
+    <!-- Главный контейнер, который будет управлять порядком блоков на мобильном -->
+    <div class="page-wrapper">
         
-        <!-- NAV: Меню (в коде стоит ПЕРВЫМ) -->
-        <nav class="menu-section">
+        <!-- 1. Шапка -->
+        <header id="main-header">
+            <div class="header-content">
+                <div class="logo-box">
+                    <div class="logo-circle"></div>
+                    <span class="site-name">Название сайта</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Навигация (Меню) -->
+        <nav id="main-nav">
             <ul>
-                <li><a href="#">Ссылка меню 1</a></li>
-                <li><a href="#">Ссылка 2</a></li>
-                <li><a href="#">Ссылка 3</a></li>
+                <li><a href="#">Меню 1</a></li>
+                <li><a href="#">Меню 2</a></li>
+                <li><a href="#">Меню 3</a></li>
             </ul>
         </nav>
 
-        <!-- TABLE: Таблица (в коде стоит ВТОРОЙ) -->
-        <section class="table-section">
-            <h2>Таблица</h2>
+        <!-- 3. Таблица -->
+        <!-- В HTML она стоит третьей, но на мобильном мы поднимем её выше через CSS -->
+        <section class="content-block" id="table-block">
+            <h2>Таблица данных</h2>
             <table>
                 <thead>
                     <tr>
@@ -41,50 +45,109 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Данные 1.1</td><td>Данные 1.2</td><td>Данные 1.3</td><td>Данные 1.4</td></tr>
-                    <tr><td>Данные 2.1</td><td>Данные 2.2</td><td>Данные 2.3</td><td>Данные 2.4</td></tr>
-                    <tr><td>Данные 3.1</td><td>Данные 3.2</td><td>Данные 3.3</td><td>Данные 3.4</td></tr>
-                    <tr><td>Данные 4.1</td><td>Данные 4.2</td><td>Данные 4.3</td><td>Данные 4.4</td></tr>
-                    <tr><td>Данные 5.1</td><td>Данные 5.2</td><td>Данные 5.3</td><td>Данные 5.4</td></tr>
-                    <tr>
-                        <td>Данные 6.1</td>
-                        <td>Данные 6.2</td>
-                        <td colspan="2" style="text-align:center; font-weight:bold;">Объединенная ячейка</td>
-                    </tr>
+                    <tr><td>Ячейка 1-1</td><td>Ячейка 1-2</td><td>Ячейка 1-3</td><td>Ячейка 1-4</td></tr>
+                    <tr><td>Ячейка 2-1</td><td>Ячейка 2-2</td><td>Ячейка 2-3</td><td>Ячейка 2-4</td></tr>
+                    <tr><td>Ячейка 3-1</td><td>Ячейка 3-2</td><td>Ячейка 3-3</td><td>Ячейка 3-4</td></tr>
+                    <tr><td>Ячейка 4-1</td><td>Ячейка 4-2</td><td>Ячейка 4-3</td><td>Ячейка 4-4</td></tr>
+                    <tr><td>Ячейка 5-1</td><td>Ячейка 5-2</td><td>Ячейка 5-3</td><td>Ячейка 5-4</td></tr>
+                    <tr><td>Ячейка 6-1</td><td>Ячейка 6-2</td><td>Ячейка 6-3</td><td>Ячейка 6-4</td></tr>
                 </tbody>
             </table>
         </section>
 
-        <!-- LINKS: Список ссылок -->
-        <section class="links-section">
-            <h2>Список гиперссылок</h2>
+        <!-- 4. Список ссылок -->
+        <!-- В HTML он стоит четвертым, но на мобильном будет ниже таблицы -->
+        <section class="content-block" id="links-block">
+            <h2>Список ссылок (база)</h2>
             <ul>
-                <li><a href="#">Ссылка на документацию</a></li>
-                <li><a href="#">Ссылка на профиль</a></li>
-                <li><a href="#">Ссылка на контакты</a></li>
+                <li><a href="http://kubsu.ru/">1) Ссылка на kubsu.ru (http)</a></li>
+                <li><a href="https://kubsu.ru/">2) Ссылка на kubsu.ru (https)</a></li>
+                <li>
+                    3) Ссылка-картинка:
+                    <br>
+                    <a href="https://kubsu.ru/">
+                        <img src="photohtml2.jpg" alt="Логотип" width="50" height="50" class="inline-img">
+                    </a>
+                </li>
+                <li><a href="about.html">4) Ссылка на внутреннюю страницу (about.html)</a></li>
+                <li><a href="index.html">5) Ссылка на главную (index.html)</a></li>
+                <li><a href="#contacts">6) Ссылка на блок "Контакты"</a></li>
+                <li>
+                    7) Ссылка с параметрами:
+                    <br>
+                    <a href="result.html?name=Ivan&age=20" target="_blank">Ссылка с параметрами</a>
+                </li>
+                <li><a href="contacts.html">8) Ссылка в текущей папке</a></li>
+                <li><a href="about/info.html">9) Ссылка в папке about</a></li>
+                <li>
+                    10) Контекстная ссылка:
+                    <p>Зайдите на <a href="https://kubsu.ru/">сайт университета</a>, чтобы узнать расписание.</p>
+                </li>
+                <li>
+                    11) Карта ссылок (map):
+                    <br>
+                    <img src="photohtml1.jpg" usemap="#site-map" alt="Карта" width="400" height="200" class="img-map">
+                    <map name="site-map">
+                        <area shape="rect" coords="0,0,200,200" href="https://kubsu.ru" alt="Прямоугольник">
+                        <area shape="circle" coords="300,100,60" href="https://google.com" alt="Круг">
+                    </map>
+                </li>
+                <li><a href="#" onclick="return false;">12) Пустая ссылка</a></li>
+                <li>13) Имитация ссылки: <span class="fake-link">Нажмите сюда</span></li>
+                <li><a href="https://kubsu.ru/" rel="nofollow">14) Ссылка с запретом для поисковиков</a></li>
+                <li>
+                    15) Нумерованный список:
+                    <ol>
+                        <li><a href="https://kubsu.ru/">КубГУ</a></li>
+                        <li><a href="https://google.com/">Google</a></li>
+                    </ol>
+                </li>
+                <li>
+                    16) FTP ссылка:
+                    <br>
+                    <a href="ftp://user:pass@ftp.example.com/file.txt" target="_blank">Скачать файл с FTP</a>
+                </li>
             </ul>
         </section>
 
-        <!-- FORM: Форма -->
-        <section class="form-section">
-            <h2>Форма</h2>
-            <form action="#" method="POST">
-                <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" placeholder="Ваше имя" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
-
-                <button type="submit" style="margin-top:10px; padding:10px 20px; background:#3498db; color:white; border:none; cursor:pointer;">Отправить</button>
-            </form>
-        </section>
-
-    </main>
-
-    <!-- FOOTER: Подвал -->
-    <footer class="container">
-        <p>&copy; Сергей Синица</p>
-    </footer>
-
-</body>
-</html>
+        <!-- 5. Форма -->
+        <section class="content-block" id="form-block">
+            <h2>Форма (база)</h2>
+            <form action="/save" method="post">
+                <p>
+                    <label>1) ФИО: </label>
+                    <input type="text" name="fio" placeholder="Иванов И.И." class="form-input">
+                </p>
+                <p>
+                    <label>2) Телефон: </label>
+                    <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" class="form-input">
+                </p>
+                <p>
+                    <label>3) E-mail: </label>
+                    <input type="email" name="email" placeholder="name@mail.ru" class="form-input">
+                </p>
+                <p>
+                    <label>4) Дата рождения: </label>
+                    <input type="date" name="birth" class="form-input">
+                </p>
+                <p>
+                    5) Пол:
+                    <br>
+                    <input type="radio" name="gender" value="male" checked> Мужской
+                    <input type="radio" name="gender" value="female"> Женский
+                </p>
+                <p>
+                    6) Любимые языки программирования:
+                    <br>
+                    <input type="checkbox" name="lang" value="pascal"> Pascal &nbsp;&nbsp;
+                    <input type="checkbox" name="lang" value="c"> C &nbsp;&nbsp;
+                    <input type="checkbox" name="lang" value="cpp"> C++ &nbsp;&nbsp;
+                    <input type="checkbox" name="lang" value="python"> Python &nbsp;&nbsp;
+                    <input type="checkbox" name="lang" value="java"> Java &nbsp;&nbsp;
+                    <input type="checkbox" name="lang" value="js"> JavaScript
+                </p>
+                <p>
+                    <label>7) Биография: </label>
+                    <br>
+                    <textarea name="bio" rows="4" cols="40" placeholder="О себе..." class="form-textarea"></textarea>
+                </p>
