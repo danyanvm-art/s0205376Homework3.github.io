@@ -1,34 +1,35 @@
-/* --- БАЗОВЫЕ СТИЛИ (Mobile First) --- */
-/* Эти стили применяются на всех устройствах, но они заточены под мобильные */
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Главный контейнер на мобильном просто растягивается на всю ширину */
 .page-wrapper {
     width: 100%;
+    /* На мобильном блоки идут друг под другом */
     display: flex;
-    flex-direction: column; /* Блоки идут строго друг под другом */
+    flex-direction: column; 
 }
 
-/* --- Шапка (Header) --- */
+/* --- Шапка --- */
 #main-header {
     background-color: #87CEEB;
-    width: 100%;
     padding: 15px;
     box-sizing: border-box;
 }
 
 .header-content {
-    text-align: center; /* На мобильном лого и текст по центру */
+    display: flex;
+    flex-direction: column; /* Лого и меню друг под другом на мобильном */
+    align-items: center;
+    text-align: center;
 }
 
 .logo-box {
-    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .logo-circle {
@@ -38,7 +39,6 @@ body {
     border-radius: 50%;
     background: #fff;
     display: inline-block;
-    vertical-align: middle;
 }
 
 .site-name {
@@ -49,27 +49,19 @@ body {
     vertical-align: middle;
 }
 
-/* --- Навигация (Nav) --- */
-#main-nav {
-    width: 100%;
-    background-color: #70a5d1;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
+/* --- Меню (на мобильном - вертикальный список) --- */
 #main-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column; /* Меню вертикально на мобильном */
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 #main-nav li {
     margin: 5px 0;
     width: 100%;
-    text-align: center;
 }
 
 #main-nav a {
@@ -80,7 +72,6 @@ body {
     color: #000;
     border-radius: 4px;
     text-align: center;
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -88,19 +79,19 @@ body {
     background-color: #ddd;
 }
 
-/* --- Контентные блоки (Таблица, Ссылки, Форма) --- */
+/* --- Контентные блоки --- */
 .content-block {
     width: 100%;
     background: #fff;
     margin-bottom: 20px;
     padding: 20px;
     box-sizing: border-box;
-    /* Mobile First: порядок блоков */
+    /* Порядок блоков на мобильном */
 }
 
 /* ВАЖНО: Задание 3, пункт 3. 
    В HTML таблица идет перед ссылками, но на мобильном она должна быть ВЫШЕ.
-   Так как flex-direction: column, то меньшее число order будет выше.
+   Меньшее число order = выше в потоке.
 */
 #table-block {
     order: 1; 
@@ -132,18 +123,10 @@ th {
     background-color: #f2f2f2;
 }
 
-/* --- Ссылки и картинки --- */
+/* --- Ссылки и прочее --- */
 a {
     color: #0000EE;
     text-decoration: underline;
-}
-
-a:hover {
-    color: #FF0000;
-}
-
-.inline-img, .img-map {
-    border: 1px solid #ccc;
 }
 
 .fake-link {
@@ -154,71 +137,69 @@ a:hover {
 
 /* --- Форма --- */
 .form-input, .form-textarea {
+    width: 100%;
     padding: 8px;
     margin-top: 5px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%; /* На мобильном поля на всю ширину */
     box-sizing: border-box;
 }
 
 .submit-btn {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 10px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
 }
 
-.submit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* --- Подвал (Footer) --- */
+/* --- Подвал --- */
 #main-footer {
     background-color: #87CEEB;
-    width: 100%;
     padding: 15px;
     text-align: center;
     margin-top: 20px;
 }
 
 
-/* --- АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И ПК (Desktop) --- */
-/* Используем min-width, чтобы эти стили применялись только на экранах шире 768px */
+
 @media (min-width: 768px) {
     
-    /* Контейнер центрируем и ограничиваем ширину */
     .page-wrapper {
         width: 960px;
-        margin: 0 auto;
-        flex-direction: column; /* Оставляем вертикальное расположение блоков для простоты, 
+        margin: 0 auto; /* Центрируем сайт */
+        flex-direction: column; /* Оставляем блоки друг под другом для простоты, 
                                    но можно было бы сделать сайдбар. 
                                    По заданию: "На планшетах и десктопах страница выглядит как в предыдущем задании" */
     }
 
-    /* Шапка: лого слева, текст рядом */
+    /* Шапка: лого слева, текст рядом, меню справа */
     .header-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Разносим лого и меню по краям */
+        align-items: center;
         text-align: left;
     }
 
     .logo-box {
-        display: inline-block;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
     }
 
-    /* Меню: делаем горизонтальным */
+    /* Меню: делаем горизонтальным и прижимаем вправо */
     #main-nav ul {
-        flex-direction: row; /* Ссылки в ряд */
-        justify-content: flex-end; /* Прижимаем вправо */
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 0;
     }
 
     #main-nav li {
         margin: 0 10px;
         width: auto;
-        text-align: left;
     }
 
     #main-nav a {
@@ -227,7 +208,7 @@ a:hover {
         text-align: left;
     }
 
-    /* Блоки контента: убираем лишние отступы, если нужно, или оставляем как есть */
+    /* Блоки контента: убираем лишние отступы, если нужно */
     .content-block {
         width: 100%;
         padding: 20px;
@@ -241,5 +222,6 @@ a:hover {
     /* Таблица: можно добавить прокрутку, если не влезает, или оставить как есть */
     table {
         font-size: 16px;
+        width: 100%; /* На ПК таблица тоже на всю ширину блока */
     }
 }
