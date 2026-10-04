@@ -1,121 +1,125 @@
-/* =========================================
-   СТИЛИ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ (Mobile First)
-   Это база. Работает на всех устройствах, 
-   пока не сработает правило @media для ПК.
-   ========================================= */
+/* --- БАЗОВЫЕ СТИЛИ (Mobile First) --- */
+/* Эти стили применяются на всех устройствах, но они заточены под мобильные */
 
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
-/* Контейнер: на телефоне он просто дает отступы по бокам */
-.container {
-    max-width: 100%; /* На телефоне 100% ширины */
-    margin: 0 auto;
-    padding: 0 15px;
+/* Главный контейнер на мобильном просто растягивается на всю ширину */
+.page-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Блоки идут строго друг под другом */
 }
 
-/* Header: на телефоне лого и название друг под другом или рядом, но в одну колонку */
-header {
-    background-color: #3498db;
-    color: white;
-    padding: 15px 0;
+/* --- Шапка (Header) --- */
+#main-header {
+    background-color: #87CEEB;
     width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .header-content {
-    display: flex;
-    align-items: center; /* Выравнивает лого и текст по центру вертикально */
-    justify-content: space-between; /* Лого слева, текст справа */
-    flex-wrap: wrap; /* Если экран очень узкий, текст может упасть вниз */
+    text-align: center; /* На мобильном лого и текст по центру */
 }
 
-.logo {
-    width: 40px;
-    height: 40px;
-    background-color: white;
+.logo-box {
+    display: inline-block;
+}
+
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #000;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #3498db;
+    background: #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.site-name {
+    font-size: 24px;
     font-weight: bold;
-    margin-right: 10px;
+    color: #000;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
-.site-title {
-    font-size: 18px;
-    margin: 0;
+/* --- Навигация (Nav) --- */
+#main-nav {
+    width: 100%;
+    background-color: #70a5d1;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-/* Nav: на телефоне ссылки идут вертикально друг под другом */
-.menu-section ul {
+#main-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column; /* Меню вертикально на мобильном */
+    align-items: center;
 }
 
-.menu-section li {
-    margin-bottom: 10px;
+#main-nav li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
 }
 
-.menu-section a {
-    color: #333;
-    text-decoration: none;
+#main-nav a {
     display: block;
     padding: 10px;
-    background-color: #ddd;
+    background: #fff;
+    text-decoration: none;
+    color: #000;
     border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.menu-section a:hover {
-    background-color: #ccc;
+#main-nav a:hover {
+    background-color: #ddd;
 }
 
-/* Main: на телефоне контент тоже 100% ширины */
-main {
-    padding: 20px 0;
-    background-color: white;
+/* --- Контентные блоки (Таблица, Ссылки, Форма) --- */
+.content-block {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Mobile First: порядок блоков */
 }
 
-/* =========================================
-   МАГИЯ ДЛЯ ПУНКТА 3 ЗАДАНИЯ
-   В HTML меню стоит ПЕРЕД таблицей.
-   Но на телефоне мы хотим, чтобы таблица была ВЫШЕ меню.
-   Используем Flexbox order.
-   ========================================= */
-
-/* Включаем Flexbox для родителя (main) */
-main {
-    display: flex;
-    flex-direction: column; /* Элементы друг под другом */
+/* ВАЖНО: Задание 3, пункт 3. 
+   В HTML таблица идет перед ссылками, но на мобильном она должна быть ВЫШЕ.
+   Так как flex-direction: column, то меньшее число order будет выше.
+*/
+#table-block {
+    order: 1; 
 }
 
-/* Меняем порядок блоков визуально */
-.menu-section {
-    order: 2; /* Меню будет вторым (ниже) */
+#links-block {
+    order: 2;
 }
 
-.table-section {
-    order: 1; /* Таблица будет первой (выше) */
-}
-
-.links-section {
+#form-block {
     order: 3;
 }
 
-.form-section {
-    order: 4;
-}
-
-/* Стили таблицы и формы для телефона (простые) */
+/* --- Таблица --- */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 
 th, td {
@@ -125,99 +129,117 @@ th, td {
 }
 
 th {
-    background-color: #3498db;
-    color: white;
+    background-color: #f2f2f2;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+/* --- Ссылки и картинки --- */
+a {
+    color: #0000EE;
+    text-decoration: underline;
 }
 
-form label {
-    margin-top: 10px;
-    font-weight: bold;
+a:hover {
+    color: #FF0000;
 }
 
-form input {
-    padding: 8px;
-    margin-top: 5px;
+.inline-img, .img-map {
     border: 1px solid #ccc;
 }
 
-footer {
-    background-color: #333;
+.fake-link {
+    color: #0000EE;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* --- Форма --- */
+.form-input, .form-textarea {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* На мобильном поля на всю ширину */
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
     color: white;
-    text-align: center;
-    padding: 20px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     width: 100%;
 }
 
-/* =========================================
-   MEDIA QUERY ДЛЯ ПЛАНШЕТОВ И ПК
-   Когда экран шире 768px, применяем эти стили.
-   ========================================= */
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Подвал (Footer) --- */
+#main-footer {
+    background-color: #87CEEB;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* --- АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И ПК (Desktop) --- */
+/* Используем min-width, чтобы эти стили применялись только на экранах шире 768px */
 @media (min-width: 768px) {
     
-    /* Контейнер: фиксируем ширину 960px и центрируем */
-    .container {
-        max-width: 960px;
+    /* Контейнер центрируем и ограничиваем ширину */
+    .page-wrapper {
+        width: 960px;
+        margin: 0 auto;
+        flex-direction: column; /* Оставляем вертикальное расположение блоков для простоты, 
+                                   но можно было бы сделать сайдбар. 
+                                   По заданию: "На планшетах и десктопах страница выглядит как в предыдущем задании" */
     }
 
-    /* Header: Лого и название в ряд, но крупнее */
+    /* Шапка: лого слева, текст рядом */
     .header-content {
-        justify-content: space-between;
-        align-items: center;
+        text-align: left;
     }
 
-    .logo {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+    .logo-box {
+        display: inline-block;
     }
 
-    .site-title {
-        font-size: 24px;
+    /* Меню: делаем горизонтальным */
+    #main-nav ul {
+        flex-direction: row; /* Ссылки в ряд */
+        justify-content: flex-end; /* Прижимаем вправо */
     }
 
-    /* Nav: на ПК меню становится горизонтальным */
-    .menu-section ul {
-        display: flex; /* Ссылки в ряд */
-        justify-content: center; /* По центру шапки */
+    #main-nav li {
+        margin: 0 10px;
+        width: auto;
+        text-align: left;
     }
 
-    .menu-section li {
-        margin: 0 15px;
-        margin-bottom: 0; /* Убираем отступ снизу */
+    #main-nav a {
+        width: auto;
+        padding: 10px 15px;
+        text-align: left;
     }
 
-    .menu-section a {
-        background-color: transparent; /* Убираем серый фон */
-        color: white;
-        padding: 0;
+    /* Блоки контента: убираем лишние отступы, если нужно, или оставляем как есть */
+    .content-block {
+        width: 100%;
+        padding: 20px;
     }
 
-    /* ГЛАВНОЕ ИЗМЕНЕНИЕ: Отменяем порядок для ПК */
-    /* На ПК блоки идут в том порядке, в котором они написаны в HTML */
-    .menu-section {
-        order: 1; 
-    }
-    .table-section {
-        order: 2;
-    }
-    .links-section {
-        order: 3;
-    }
-    .form-section {
-        order: 4;
+    /* Возвращаем фиксированную ширину полям формы для красоты на ПК */
+    .form-input, .form-textarea {
+        width: 300px;
     }
 
-    /* Таблица: добавляем полоски (зебру) только для ПК */
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(odd) {
-        background-color: #ffffff;
+    /* Таблица: можно добавить прокрутку, если не влезает, или оставить как есть */
+    table {
+        font-size: 16px;
     }
 }
