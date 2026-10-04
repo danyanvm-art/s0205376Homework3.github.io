@@ -4,33 +4,31 @@
     <meta charset="UTF-8">
     <title>Задание 3: Адаптивная верстка</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ЭТО КРИТИЧЕСКИ ВАЖНО: без этой строки адаптив не сработает -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <!-- Главный контейнер -->
+    <!-- 1. ШАПКА НА ВСЮ ШИРИНУ (вынесена из wrapper) -->
+    <header id="main-header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <div class="logo-circle"></div>
+                <span class="site-name">Название сайта</span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Меню 1</a></li>
+                    <li><a href="#">Меню 2</a></li>
+                    <li><a href="#">Меню 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. КОНТЕНТ В ЦЕНТРЕ (только контент, без шапки и подвала) -->
     <div class="page-wrapper">
         
-        <!-- 1. Шапка (Header) -->
-        <header id="main-header">
-            <div class="header-inner">
-                <div class="logo-area">
-                    <div class="logo-circle"></div>
-                    <span class="site-name">Название сайта</span>
-                </div>
-                <nav id="main-nav">
-                    <ul>
-                        <li><a href="#">Меню 1</a></li>
-                        <li><a href="#">Меню 2</a></li>
-                        <li><a href="#">Меню 3</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <!-- 2. Таблица данных -->
-        <!-- Класс block-table нужен для перестановки на мобильном -->
+        <!-- Таблица данных -->
         <section class="content-block block-table" id="table-block">
             <h2>Таблица данных</h2>
             <table>
@@ -53,8 +51,7 @@
             </table>
         </section>
 
-        <!-- 3. Список ссылок -->
-        <!-- Класс block-links нужен для перестановки на мобильном -->
+        <!-- Список ссылок -->
         <section class="content-block block-links" id="links-block">
             <h2>Список ссылок (база)</h2>
             <ul>
@@ -82,7 +79,7 @@
             </ul>
         </section>
 
-        <!-- 4. Форма -->
+        <!-- Форма -->
         <section class="content-block block-form" id="form-block">
             <h2>Форма (база)</h2>
             <form action="/save" method="post">
@@ -98,18 +95,18 @@
             </form>
         </section>
 
-        <!-- 5. Контакты (текстовый блок) -->
+        <!-- Контакты -->
         <section class="content-block block-contacts" id="contacts-block">
             <h2>Контакты</h2>
             <p>Здесь находится информация для связи.</p>
         </section>
 
-        <!-- 6. Подвал -->
-        <footer id="main-footer">
-            &copy; Данил Любарец
-        </footer>
-
     </div>
 
+    <!-- 3. ПОДВАЛ НА ВСЮ ШИРИНУ (вынесен из wrapper) -->
+    <footer id="main-footer">
+        &copy; Данил Любарец
+    </footer>
+
 </body>
-</html>
+</ht
