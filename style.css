@@ -1,7 +1,3 @@
-/* 
-   1. СТИЛИ ДЛЯ ПК (DESKTOP)
-   Эти стили делают сайт ТОЧНО таким же, как на твоих скриншотах Задания 2.
-  */
 
 body {
     font-family: Arial, sans-serif;
@@ -11,30 +7,36 @@ body {
     color: #333;
 }
 
-.page-wrapper {
-    width: 960px; /* Фиксированная ширина как в Задании 2 */
-    margin: 0 auto; /* Центрирование */
-    background-color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+/* Контейнер: на мобильном он просто дает небольшие отступы по бокам (15px), 
+   а на ПК ограничивает ширину 960px */
+.container {
+    width: 100%;
+    max-width: 960px; /* На ПК не шире 960px */
+    margin: 0 auto;
+    padding: 0 15px; /* Небольшие отступы по краям экрана на мобильном */
+    box-sizing: border-box;
 }
 
-/* --- Шапка --- */
+
 #main-header {
     background-color: #87CEEB;
     padding: 15px 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.header-inner {
+.header-content {
     display: flex;
-    justify-content: space-between; /* Лого слева, меню справа */
-    align-items: center;
+    flex-direction: column; /* Вертикально: Лого -> Меню */
+    align-items: center;    /* По центру (можно изменить на flex-start, если нужно строго влево) */
+    width: 100%;
 }
 
 .logo-area {
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
+    gap: 10px; /* Расстояние между кружком и текстом */
 }
 
 .logo-circle {
@@ -43,162 +45,243 @@ body {
     border: 2px solid #000;
     border-radius: 50%;
     background: #fff;
-    margin-right: 15px;
+    flex-shrink: 0; /* Чтобы кружок не сплющивался */
 }
 
 .site-name {
     font-size: 24px;
     font-weight: bold;
     color: #000;
+    line-height: 1;
 }
 
-/* --- Меню --- */
+
 #main-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
+    width: 100%;
+    text-align: center;
 }
 
 #main-nav li {
-    margin-left: 20px;
+    margin: 5px 0;
 }
 
 #main-nav a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    font-size: 16px;
+    display: block;
+    padding: 8px 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2); /* Легкий фон для кнопок меню */
 }
 
 #main-nav a:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.content-wrapper {
+    background-color: #fff;
+    padding: 20px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Общие стили для блоков контента */
+.block-links, .block-table, .block-form {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+}
+
+
+.block-links ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.block-links a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.fake-link {
+    color: #0066cc;
+    cursor: pointer;
     text-decoration: underline;
 }
 
-/* --- Контентные блоки --- */
-.content-block {
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ccc;
-    background: #fff;
-}
-
-/* --- Таблица --- */
-table {
+.block-table table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-th, td {
+.block-table th, .block-table td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 8px;
     text-align: left;
 }
 
-th {
+.block-table th {
     background-color: #f2f2f2;
 }
 
-/* --- Форма --- */
+.block-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.block-table tbody tr:nth-child(even) {
+    background-color: #eef7ff;
+}
+
+
 .form-input, .form-textarea {
-    width: 300px; /* Фиксированная ширина полей для ПК */
-    padding: 8px;
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px; /* Увеличил шрифт для удобства нажатия пальцем */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Стили для радио-кнопок и чекбоксов */
+.checkbox-group, .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.checkbox-group input, .radio-group input {
+    width: auto;
 }
 
 .submit-btn {
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
-/* --- Подвал --- */
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+
 #main-footer {
     background-color: #87CEEB;
-    padding: 15px;
+    padding: 20px 0;
     text-align: center;
-    margin-top: auto;
+    width: 100%;
 }
 
-/* 
-   2. АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ (MOBILE FIRST)
-   Эти стили применяются ТОЛЬКО если экран уже 768px.
-   Они меняют вид, чтобы было удобно на телефоне.
- */
-@media (max-width: 768px) {
-    
-    /* 1. Убираем фиксированную ширину сайта, растягиваем на 100% */
-    .page-wrapper {
-        width: 100%;
-        margin: 0;
-        padding: 0 10px; /* Отступы по бокам, чтобы текст не прилипал */
-    }
+#main-footer .container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
 
-    /* 2. Меняем шапку: лого и меню друг под другом */
-    .header-inner {
-        flex-direction: column;
+
+
+@media (min-width: 768px) {
+    
+    /* 1. Шапка: Лого слева, Меню справа */
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        text-align: center;
     }
 
     .logo-area {
-        margin-bottom: 15px;
-        flex-direction: column;
+        margin-bottom: 0;
+        align-items: center;
     }
 
-    /* 3. Меню делаем вертикальным списком */
+    /* 2. МЕНЮ: В РЯД (Это самое важное) */
     #main-nav ul {
-        flex-direction: column;
-        width: 100%;
+        display: flex;             /* Включаем Flexbox */
+        flex-direction: row;       /* Элементы в ряд */
+        list-style: none;          /* Убираем точки списка */
+        margin: 0;
+        padding: 0;
+        text-align: left;
     }
 
     #main-nav li {
-        margin: 10px 0;
-        width: 100%;
+        margin: 0 20px;           /* Расстояние между пунктами */
+        margin-bottom: 0;
     }
 
     #main-nav a {
-        display: block;
-        padding: 10px;
-        background: #e0e0e0;
-        text-align: center;
-        border-radius: 4px;
+        display: block;           /* Ссылка как блок */
+        border: none;             /* Убираем рамки */
+        background: transparent;  /* Убираем фон */
+        padding: 0;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;    /* Убираем подчеркивание по умолчанию */
     }
 
-    /* 4. ГЛАВНОЕ ТРЕБОВАНИЕ ЗАДАНИЯ 3: Порядок блоков */
-    /* В HTML таблица стоит перед ссылками, но на мобильном она должна быть ВЫШЕ.
-       Мы используем order. Меньшее число = выше на экране. */
-    
-    .block-table {
-        order: 1; /* Таблица будет первой */
+    #main-nav a:hover {
+        text-decoration: underline; /* Подчеркивание при наведении */
     }
 
-    .block-links {
-        order: 2; /* Ссылки будут вторыми */
+    /* 3. Контент: Центрируем на 960px */
+    .content-wrapper {
+        width: 960px;
+        margin: 0 auto;
+        padding: 20px 0;
     }
 
-    .block-form {
-        order: 3; /* Форма третьей */
-    }
-
-    .block-contacts {
-        order: 4;
-    }
-
-    /* 5. Растягиваем поля формы на всю ширину на мобильном */
-    .form-input, .form-textarea {
+    /* Блоки контента */
+    .block-links, .block-table, .block-form {
         width: 100%;
+        margin-bottom: 30px;
+        padding: 20px;
     }
 
-    /* 6. Таблица на мобильном может быть очень широкой, 
-       добавим горизонтальную прокрутку, если не влезает */
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+    /* Таблица */
+    .block-table table {
+        font-size: 16px;
+    }
+    
+    .block-table th, .block-table td {
+        padding: 12px;
+    }
+
+    /* Форма: поля не на всю ширину, а фиксированной ширины */
+    .form-input, .form-textarea {
+        width: 300px;
+        box-sizing: content-box;
     }
 }
+
