@@ -2,19 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Задание 3: Адаптивная верстка</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <!-- 1. ШАПКА НА ВСЮ ШИРИНУ (вынесена из wrapper) -->
+    <!-- 1. ШАПКА (HEADER) -->
     <header id="main-header">
-        <div class="header-inner">
+        <div class="header-content">
             <div class="logo-area">
                 <div class="logo-circle"></div>
                 <span class="site-name">Название сайта</span>
             </div>
+            
+            <!-- Меню (NAV) -->
             <nav id="main-nav">
                 <ul>
                     <li><a href="#">Меню 1</a></li>
@@ -25,35 +27,14 @@
         </div>
     </header>
 
-    <!-- 2. КОНТЕНТ В ЦЕНТРЕ (только контент, без шапки и подвала) -->
-    <div class="page-wrapper">
+    <!-- Основной контейнер контента (960px по центру, но только для ПК) -->
+    <main class="content-wrapper">
         
-        <!-- Таблица данных -->
-        <section class="content-block block-table" id="table-block">
-            <h2>Таблица данных</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Колонка 1</th>
-                        <th>Колонка 2</th>
-                        <th>Колонка 3</th>
-                        <th>Колонка 4</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Ячейка 1-1</td><td>Ячейка 1-2</td><td>Ячейка 1-3</td><td>Ячейка 1-4</td></tr>
-                    <tr><td>Ячейка 2-1</td><td>Ячейка 2-2</td><td>Ячейка 2-3</td><td>Ячейка 2-4</td></tr>
-                    <tr><td>Ячейка 3-1</td><td>Ячейка 3-2</td><td>Ячейка 3-3</td><td>Ячейка 3-4</td></tr>
-                    <tr><td>Ячейка 4-1</td><td>Ячейка 4-2</td><td>Ячейка 4-3</td><td>Ячейка 4-4</td></tr>
-                    <tr><td>Ячейка 5-1</td><td>Ячейка 5-2</td><td>Ячейка 5-3</td><td>Ячейка 5-4</td></tr>
-                    <tr><td>Ячейка 6-1</td><td>Ячейка 6-2</td><td>Ячейка 6-3</td><td>Ячейка 6-4</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Список ссылок -->
-        <section class="content-block block-links" id="links-block">
-            <h2>Список ссылок (база)</h2>
+        <!-- ВАЖНО: По условию задания 3, в HTML списке ссылок идет ПЕРЕД таблицей -->
+        
+        <!-- 2. СПИСОК ГИПЕРССЫЛОК -->
+        <section class="block-links" style="order: 2;"> <!-- На ПК будет вторым -->
+            <h2>Список гиперссылок</h2>
             <ul>
                 <li><a href="http://kubsu.ru/">1) Ссылка на kubsu.ru (http)</a></li>
                 <li><a href="https://kubsu.ru/">2) Ссылка на kubsu.ru (https)</a></li>
@@ -79,34 +60,60 @@
             </ul>
         </section>
 
-        <!-- Форма -->
-        <section class="content-block block-form" id="form-block">
-            <h2>Форма (база)</h2>
+        <!-- 3. ТАБЛИЦА ДАННЫХ -->
+        <section class="block-table" style="order: 1;"> <!-- На ПК будет первым, на мобильном тоже первым -->
+            <h2>Таблица данных</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Колонка 1</th>
+                        <th>Колонка 2</th>
+                        <th>Колонка 3</th>
+                        <th>Колонка 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ячейка 1-1</td><td>Ячейка 1-2</td><td>Ячейка 1-3</td><td>Ячейка 1-4</td></tr>
+                    <tr><td>Ячейка 2-1</td><td>Ячейка 2-2</td><td colspan="2">Объединенная ячейка (строка 2)</td></tr>
+                    <tr><td>Ячейка 3-1</td><td>Ячейка 3-2</td><td>Ячейка 3-3</td><td>Ячейка 3-4</td></tr>
+                    <tr><td rowspan="2">Объединенная ячейка (строки 4-5)</td><td>Ячейка 4-2</td><td>Ячейка 4-3</td><td>Ячейка 4-4</td></tr>
+                    <tr><td>Ячейка 5-2</td><td>Ячейка 5-3</td><td>Ячейка 5-4</td></tr>
+                    <tr><td>Ячейка 6-1</td><td>Ячейка 6-2</td><td>Ячейка 6-3</td><td>Ячейка 6-4</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 4. ФОРМА -->
+        <section class="block-form" style="order: 3;">
+            <h2>Форма регистрации</h2>
             <form action="/save" method="post">
                 <p><label>1) ФИО: </label><input type="text" name="fio" placeholder="Иванов И.И." class="form-input"></p>
                 <p><label>2) Телефон: </label><input type="tel" name="phone" placeholder="+7 (999) 000-00-00" class="form-input"></p>
                 <p><label>3) E-mail: </label><input type="email" name="email" placeholder="name@mail.ru" class="form-input"></p>
                 <p><label>4) Дата рождения: </label><input type="date" name="birth" class="form-input"></p>
                 <p>5) Пол: <input type="radio" name="gender" value="male" checked> Мужской <input type="radio" name="gender" value="female"> Женский</p>
-                <p>6) Языки: <input type="checkbox" name="lang" value="pascal"> Pascal <input type="checkbox" name="lang" value="c"> C</p>
+                <p>6) Любимые языки: </p>
+                    <input type="checkbox" name="lang" value="pascal"> Pascal </p>
+                    <input type="checkbox" name="lang" value="c"> C++ </p>
+                    <input type="checkbox" name="lang" value="python"> Python</p> 
+                    <input type="checkbox" name="lang" value="Java"> Java</p> 
+                    <input type="checkbox" name="lang" value="javascript"> JavaScipt</p> 
+                    <input type="checkbox" name="lang" value="haskel"> haskel</p> 
+                    <input type="checkbox" name="lang" value="php"> PHP</p> 
+                    <input type="checkbox" name="lang" value="scala"> Scala</p>
                 <p><label>7) Биография: </label><br><textarea name="bio" rows="3" cols="30" class="form-textarea"></textarea></p>
                 <p><input type="checkbox" name="agree"> 8) С контрактом ознакомлен(а)</p>
                 <p><button type="submit" class="submit-btn">9) Сохранить</button></p>
             </form>
         </section>
+    </main>
 
-        <!-- Контакты -->
-        <section class="content-block block-contacts" id="contacts-block">
-            <h2>Контакты</h2>
-            <p>Здесь находится информация для связи.</p>
-        </section>
-
-    </div>
-
-    <!-- 3. ПОДВАЛ НА ВСЮ ШИРИНУ (вынесен из wrapper) -->
+    <!-- 5. ПОДВАЛ (FOOTER) -->
     <footer id="main-footer">
-        &copy; Данил Любарец
+        <div class="container">
+            &copy; Данил Любарец
+        </div>
     </footer>
 
 </body>
-</ht
+</html>
