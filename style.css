@@ -1,3 +1,7 @@
+/* 
+   1. СТИЛИ ДЛЯ ПК (DESKTOP)
+   Эти стили делают сайт ТОЧНО таким же, как на твоих скриншотах Задания 2.
+  */
 
 body {
     font-family: Arial, sans-serif;
@@ -8,28 +12,29 @@ body {
 }
 
 .page-wrapper {
-    width: 100%;
-    /* На мобильном блоки идут друг под другом */
+    width: 960px; /* Фиксированная ширина как в Задании 2 */
+    margin: 0 auto; /* Центрирование */
+    background-color: #fff;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 /* --- Шапка --- */
 #main-header {
     background-color: #87CEEB;
-    padding: 15px;
-    box-sizing: border-box;
+    padding: 15px 0;
 }
 
-.header-content {
+.header-inner {
     display: flex;
-    flex-direction: column; /* Лого и меню друг под другом на мобильном */
+    justify-content: space-between; /* Лого слева, меню справа */
     align-items: center;
-    text-align: center;
 }
 
-.logo-box {
-    margin-bottom: 10px;
+.logo-area {
+    display: flex;
+    align-items: center;
 }
 
 .logo-circle {
@@ -38,71 +43,43 @@ body {
     border: 2px solid #000;
     border-radius: 50%;
     background: #fff;
-    display: inline-block;
+    margin-right: 15px;
 }
 
 .site-name {
     font-size: 24px;
     font-weight: bold;
     color: #000;
-    margin-left: 10px;
-    vertical-align: middle;
 }
 
-/* --- Меню (на мобильном - вертикальный список) --- */
+/* --- Меню --- */
 #main-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
-    width: 100%;
 }
 
 #main-nav li {
-    margin: 5px 0;
-    width: 100%;
+    margin-left: 20px;
 }
 
 #main-nav a {
-    display: block;
-    padding: 10px;
-    background: #fff;
     text-decoration: none;
     color: #000;
-    border-radius: 4px;
-    text-align: center;
-    box-sizing: border-box;
+    font-weight: bold;
 }
 
 #main-nav a:hover {
-    background-color: #ddd;
+    text-decoration: underline;
 }
 
 /* --- Контентные блоки --- */
 .content-block {
-    width: 100%;
-    background: #fff;
-    margin-bottom: 20px;
     padding: 20px;
-    box-sizing: border-box;
-    /* Порядок блоков на мобильном */
-}
-
-/* ВАЖНО: Задание 3, пункт 3. 
-   В HTML таблица идет перед ссылками, но на мобильном она должна быть ВЫШЕ.
-   Меньшее число order = выше в потоке.
-*/
-#table-block {
-    order: 1; 
-}
-
-#links-block {
-    order: 2;
-}
-
-#form-block {
-    order: 3;
+    margin: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
 }
 
 /* --- Таблица --- */
@@ -110,12 +87,11 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    font-size: 14px;
 }
 
 th, td {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -123,31 +99,16 @@ th {
     background-color: #f2f2f2;
 }
 
-/* --- Ссылки и прочее --- */
-a {
-    color: #0000EE;
-    text-decoration: underline;
-}
-
-.fake-link {
-    color: #0000EE;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 /* --- Форма --- */
 .form-input, .form-textarea {
-    width: 100%;
+    width: 300px; /* Фиксированная ширина полей для ПК */
     padding: 8px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #007BFF;
     color: white;
     border: none;
@@ -160,68 +121,84 @@ a {
     background-color: #87CEEB;
     padding: 15px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: auto;
 }
 
-
-
-@media (min-width: 768px) {
+/* 
+   2. АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ (MOBILE FIRST)
+   Эти стили применяются ТОЛЬКО если экран уже 768px.
+   Они меняют вид, чтобы было удобно на телефоне.
+ */
+@media (max-width: 768px) {
     
+    /* 1. Убираем фиксированную ширину сайта, растягиваем на 100% */
     .page-wrapper {
-        width: 960px;
-        margin: 0 auto; /* Центрируем сайт */
-        flex-direction: column; /* Оставляем блоки друг под другом для простоты, 
-                                   но можно было бы сделать сайдбар. 
-                                   По заданию: "На планшетах и десктопах страница выглядит как в предыдущем задании" */
-    }
-
-    /* Шапка: лого слева, текст рядом, меню справа */
-    .header-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; /* Разносим лого и меню по краям */
-        align-items: center;
-        text-align: left;
-    }
-
-    .logo-box {
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-    }
-
-    /* Меню: делаем горизонтальным и прижимаем вправо */
-    #main-nav ul {
-        flex-direction: row;
-        justify-content: flex-end;
+        width: 100%;
         margin: 0;
+        padding: 0 10px; /* Отступы по бокам, чтобы текст не прилипал */
+    }
+
+    /* 2. Меняем шапку: лого и меню друг под другом */
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-area {
+        margin-bottom: 15px;
+        flex-direction: column;
+    }
+
+    /* 3. Меню делаем вертикальным списком */
+    #main-nav ul {
+        flex-direction: column;
+        width: 100%;
     }
 
     #main-nav li {
-        margin: 0 10px;
-        width: auto;
+        margin: 10px 0;
+        width: 100%;
     }
 
     #main-nav a {
-        width: auto;
-        padding: 10px 15px;
-        text-align: left;
+        display: block;
+        padding: 10px;
+        background: #e0e0e0;
+        text-align: center;
+        border-radius: 4px;
     }
 
-    /* Блоки контента: убираем лишние отступы, если нужно */
-    .content-block {
-        width: 100%;
-        padding: 20px;
+    /* 4. ГЛАВНОЕ ТРЕБОВАНИЕ ЗАДАНИЯ 3: Порядок блоков */
+    /* В HTML таблица стоит перед ссылками, но на мобильном она должна быть ВЫШЕ.
+       Мы используем order. Меньшее число = выше на экране. */
+    
+    .block-table {
+        order: 1; /* Таблица будет первой */
     }
 
-    /* Возвращаем фиксированную ширину полям формы для красоты на ПК */
+    .block-links {
+        order: 2; /* Ссылки будут вторыми */
+    }
+
+    .block-form {
+        order: 3; /* Форма третьей */
+    }
+
+    .block-contacts {
+        order: 4;
+    }
+
+    /* 5. Растягиваем поля формы на всю ширину на мобильном */
     .form-input, .form-textarea {
-        width: 300px;
+        width: 100%;
     }
 
-    /* Таблица: можно добавить прокрутку, если не влезает, или оставить как есть */
+    /* 6. Таблица на мобильном может быть очень широкой, 
+       добавим горизонтальную прокрутку, если не влезает */
     table {
-        font-size: 16px;
-        width: 100%; /* На ПК таблица тоже на всю ширину блока */
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }
