@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <title>Задание 3: Адаптивная верстка</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ЭТО ВАЖНО ДЛЯ ЗАДАНИЯ 3: чтобы телефон не зумил страницу сам -->
+    <!-- ЭТО КРИТИЧЕСКИ ВАЖНО: без этой строки адаптив не сработает -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+    <!-- Главный контейнер -->
     <div class="page-wrapper">
         
-        <!-- 1. Шапка -->
+        <!-- 1. Шапка (Header) -->
         <header id="main-header">
-            <div class="header-content">
-                <div class="logo-box">
+            <div class="header-inner">
+                <div class="logo-area">
                     <div class="logo-circle"></div>
                     <span class="site-name">Название сайта</span>
                 </div>
-                
-                <!-- Меню (на мобильном будет ниже, на ПК справа) -->
                 <nav id="main-nav">
                     <ul>
-                        <li><a href="#">Ссылка меню 1</a></li>
-                        <li><a href="#">Ссылка меню 2</a></li>
-                        <li><a href="#">Ссылка меню 3</a></li>
+                        <li><a href="#">Меню 1</a></li>
+                        <li><a href="#">Меню 2</a></li>
+                        <li><a href="#">Меню 3</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
         <!-- 2. Таблица данных -->
-        <!-- В HTML она стоит второй, но на мобильном мы поднимем её выше списка ссылок -->
+        <!-- Класс block-table нужен для перестановки на мобильном -->
         <section class="content-block block-table" id="table-block">
             <h2>Таблица данных</h2>
             <table>
@@ -55,7 +54,7 @@
         </section>
 
         <!-- 3. Список ссылок -->
-        <!-- В HTML он стоит третьим, но на мобильном будет ниже таблицы -->
+        <!-- Класс block-links нужен для перестановки на мобильном -->
         <section class="content-block block-links" id="links-block">
             <h2>Список ссылок (база)</h2>
             <ul>
@@ -99,9 +98,15 @@
             </form>
         </section>
 
-        <!-- 5. Подвал -->
+        <!-- 5. Контакты (текстовый блок) -->
+        <section class="content-block block-contacts" id="contacts-block">
+            <h2>Контакты</h2>
+            <p>Здесь находится информация для связи.</p>
+        </section>
+
+        <!-- 6. Подвал -->
         <footer id="main-footer">
-            &copy; Данил Любарец
+            &copy; Сергей Синица
         </footer>
 
     </div>
